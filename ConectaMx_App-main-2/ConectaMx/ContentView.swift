@@ -13,26 +13,28 @@ struct ContentView: View {
     /*@State private*/
     var tagsModel = TagsModel()
     var orgModel = OrganizationModel()
+    var postsModel = PostModel()
+    var personsModel = PersonModel()
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
-                    List {
-                        ForEach(tagsModel.tags) { tag in
-                            Text(tag.tags)
-                        }
-                    }
-//                    switch activePage {
-//                    case .home:
-//                        HomeView()
-//                    case .search:
-//                        SearchView()
-//                    case .favorites:
-//                        FavoritesView()
-//                    case .profile:
-//                        ProfileView(tags: <#[String]#>)
-//                    }
+                    // List {
+                    //     ForEach(tagsModel.tags) { tag in
+                    //         Text(tag.tags)
+                    //     }
+                    // }
+                   switch activePage {
+                   case .home:
+                       HomeView()
+                   case .search:
+                       SearchView()
+                   case .favorites:
+                       FavoritesView()
+                   case .profile:
+                       ProfileView(tags: <#[String]#>)
+                   }
                 }
                 VStack {
                     Spacer()
@@ -43,6 +45,8 @@ struct ContentView: View {
         .onAppear(){
             tagsModel.fetchTags()
             orgModel.fetchOrganizations()
+            postsModel.fetchPosts()
+            personsModel.fetchPosts()
         }
     }
 }
